@@ -3,3 +3,8 @@
 *.o
 *.map
 *.lst
+*.elf
+*.nacp
+*.nso
+*.nro
+*.pfs0

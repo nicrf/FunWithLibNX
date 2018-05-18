@@ -35,11 +35,11 @@ SOURCES		:=	$(shell find source -type d)
 DATA		:=	data
 INCLUDES	:=	include/ lvgl/
 EXEFS_SRC	:=	exefs_src
-
+YUZU_PATH   :=  ../../../../../Switch/yuzu/
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
-ARCH	:=	-march=armv8-a -mtune=cortex-a57 -mtp=soft -fPIE
+ARCH	:=	-march=armv8-a -mtune=cortex-a57 -mtp=soft -fPIE -fdiagnostics-color=always
 
 CFLAGS	:=	-g -Wall -O2 -ffunction-sections \
 			$(ARCH) $(DEFINES)
@@ -178,6 +178,13 @@ $(OUTPUT).elf	:	$(OFILES)
 
 -include $(DEPENDS)
 
+
+	
 #---------------------------------------------------------------------------------------
 endif
 #---------------------------------------------------------------------------------------
+
+#Laucht Yuzu
+run: 
+	@echo "Lauch Yuzu Emulator"
+	$(YUZU_PATH)/yuzu.exe $(OUTPUT).nro

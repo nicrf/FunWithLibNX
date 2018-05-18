@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="FunWithLibNX" Version="10.0.0" InternalType="">
+  <VirtualDirectory Name="common">
+    <File Name="common/ui.h"/>
+    <File Name="common/ui.c"/>
+    <File Name="common/theme.h"/>
+    <File Name="common/theme.c"/>
+    <File Name="common/text.h"/>
+    <File Name="common/text.c"/>
+    <File Name="common/netloader.h"/>
+    <File Name="common/netloader.c"/>
+    <File Name="common/nanojpeg.h"/>
+    <File Name="common/nanojpeg.c"/>
+    <File Name="common/message-box.c"/>
+    <File Name="common/menu.h"/>
+    <File Name="common/menu.c"/>
+    <File Name="common/menu-list.c"/>
+    <File Name="common/menu-entry.c"/>
+    <File Name="common/math.h"/>
+    <File Name="common/math.c"/>
+    <File Name="common/main.h"/>
+    <File Name="common/launch.h"/>
+    <File Name="common/launch.c"/>
+    <File Name="common/language.h"/>
+    <File Name="common/language.c"/>
+    <File Name="common/font.h"/>
+    <File Name="common/font.c"/>
+    <File Name="common/common.h"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="source">
+    <File Name="source/main.c"/>
+    <File Name="source/lv_nx.h"/>
+    <File Name="source/lv_nx.c"/>
+    <File Name="source/lv_conf.h"/>
+    <File Name="source/framebuffer.c"/>
+    <VirtualDirectory Name="lvgl">
+      <File Name="source/lvgl/lv_conf_templ.h"/>
+      <File Name="source/lvgl/lvgl.h"/>
+      <VirtualDirectory Name="lv_themes">
+        <File Name="source/lvgl/lv_themes/lv_theme_zen.h"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_zen.c"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_templ.h"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_templ.c"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_night.h"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_night.c"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_mono.h"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_mono.c"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_material.h"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_material.c"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_default.h"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_default.c"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_alien.h"/>
+        <File Name="source/lvgl/lv_themes/lv_theme_alien.c"/>
+        <File Name="source/lvgl/lv_themes/lv_theme.h"/>
+        <File Name="source/lvgl/lv_themes/lv_theme.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="lv_objx">
+        <File Name="source/lvgl/lv_objx/lv_win.h"/>
+        <File Name="source/lvgl/lv_objx/lv_win.c"/>
+        <File Name="source/lvgl/lv_objx/lv_tabview.h"/>
+        <File Name="source/lvgl/lv_objx/lv_tabview.c"/>
+        <File Name="source/lvgl/lv_objx/lv_ta.h"/>
+        <File Name="source/lvgl/lv_objx/lv_ta.c"/>
+        <File Name="source/lvgl/lv_objx/lv_sw.h"/>
+        <File Name="source/lvgl/lv_objx/lv_sw.c"/>
+        <File Name="source/lvgl/lv_objx/lv_slider.h"/>
+        <File Name="source/lvgl/lv_objx/lv_slider.c"/>
+        <File Name="source/lvgl/lv_objx/lv_roller.h"/>
+        <File Name="source/lvgl/lv_objx/lv_roller.c"/>
+        <File Name="source/lvgl/lv_objx/lv_page.h"/>
+        <File Name="source/lvgl/lv_objx/lv_page.c"/>
+        <File Name="source/lvgl/lv_objx/lv_objx_templ.h"/>
+        <File Name="source/lvgl/lv_objx/lv_objx_templ.c"/>
+        <File Name="source/lvgl/lv_objx/lv_mbox.h"/>
+        <File Name="source/lvgl/lv_objx/lv_mbox.c"/>
+        <File Name="source/lvgl/lv_objx/lv_lmeter.h"/>
+        <File Name="source/lvgl/lv_objx/lv_lmeter.c"/>
+        <File Name="source/lvgl/lv_objx/lv_list.h"/>
+        <File Name="source/lvgl/lv_objx/lv_list.c"/>
+        <File Name="source/lvgl/lv_objx/lv_line.h"/>
+        <File Name="source/lvgl/lv_objx/lv_line.c"/>
+        <File Name="source/lvgl/lv_objx/lv_led.h"/>
+        <File Name="source/lvgl/lv_objx/lv_led.c"/>
+        <File Name="source/lvgl/lv_objx/lv_label.h"/>
+        <File Name="source/lvgl/lv_objx/lv_label.c"/>
+        <File Name="source/lvgl/lv_objx/lv_kb.h"/>
+        <File Name="source/lvgl/lv_objx/lv_kb.c"/>
+        <File Name="source/lvgl/lv_objx/lv_img.h"/>
+        <File Name="source/lvgl/lv_objx/lv_img.c"/>
+        <File Name="source/lvgl/lv_objx/lv_gauge.h"/>
+        <File Name="source/lvgl/lv_objx/lv_gauge.c"/>
+        <File Name="source/lvgl/lv_objx/lv_ddlist.h"/>
+        <File Name="source/lvgl/lv_objx/lv_ddlist.c"/>
+        <File Name="source/lvgl/lv_objx/lv_cont.h"/>
+        <File Name="source/lvgl/lv_objx/lv_cont.c"/>
+        <File Name="source/lvgl/lv_objx/lv_chart.h"/>
+        <File Name="source/lvgl/lv_objx/lv_chart.c"/>
+        <File Name="source/lvgl/lv_objx/lv_cb.h"/>
+        <File Name="source/lvgl/lv_objx/lv_cb.c"/>
+        <File Name="source/lvgl/lv_objx/lv_btnm.h"/>
+        <File Name="source/lvgl/lv_objx/lv_btnm.c"/>
+        <File Name="source/lvgl/lv_objx/lv_btn.h"/>
+        <File Name="source/lvgl/lv_objx/lv_btn.c"/>
+        <File Name="source/lvgl/lv_objx/lv_bar.h"/>
+        <File Name="source/lvgl/lv_objx/lv_bar.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="lv_misc">
+        <File Name="source/lvgl/lv_misc/lv_ufs.h"/>
+        <File Name="source/lvgl/lv_misc/lv_ufs.c"/>
+        <File Name="source/lvgl/lv_misc/lv_txt.h"/>
+        <File Name="source/lvgl/lv_misc/lv_txt.c"/>
+        <File Name="source/lvgl/lv_misc/lv_trigo.h"/>
+        <File Name="source/lvgl/lv_misc/lv_trigo.c"/>
+        <File Name="source/lvgl/lv_misc/lv_templ.h"/>
+        <File Name="source/lvgl/lv_misc/lv_templ.c"/>
+        <File Name="source/lvgl/lv_misc/lv_task.h"/>
+        <File Name="source/lvgl/lv_misc/lv_task.c"/>
+        <File Name="source/lvgl/lv_misc/lv_mem.h"/>
+        <File Name="source/lvgl/lv_misc/lv_mem.c"/>
+        <File Name="source/lvgl/lv_misc/lv_math.h"/>
+        <File Name="source/lvgl/lv_misc/lv_math.c"/>
+        <File Name="source/lvgl/lv_misc/lv_ll.h"/>
+        <File Name="source/lvgl/lv_misc/lv_ll.c"/>
+        <File Name="source/lvgl/lv_misc/lv_fs.h"/>
+        <File Name="source/lvgl/lv_misc/lv_fs.c"/>
+        <File Name="source/lvgl/lv_misc/lv_font.h"/>
+        <File Name="source/lvgl/lv_misc/lv_font.c"/>
+        <File Name="source/lvgl/lv_misc/lv_color.h"/>
+        <File Name="source/lvgl/lv_misc/lv_color.c"/>
+        <File Name="source/lvgl/lv_misc/lv_circ.h"/>
+        <File Name="source/lvgl/lv_misc/lv_circ.c"/>
+        <File Name="source/lvgl/lv_misc/lv_area.h"/>
+        <File Name="source/lvgl/lv_misc/lv_area.c"/>
+        <File Name="source/lvgl/lv_misc/lv_anim.h"/>
+        <File Name="source/lvgl/lv_misc/lv_anim.c"/>
+        <VirtualDirectory Name="lv_fonts">
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_symbol_def.h"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_symbol_40.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_symbol_30.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_symbol_20.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_symbol_10.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_40_latin_sup.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_40_cyrillic.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_40.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_30_latin_sup.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_30_cyrillic.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_30.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_20_latin_sup.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_20_cyrillic.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_20.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_10_latin_sup.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_10_cyrillic.c"/>
+          <File Name="source/lvgl/lv_misc/lv_fonts/lv_font_dejavu_10.c"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="lv_hal">
+        <File Name="source/lvgl/lv_hal/lv_hal_tick.h"/>
+        <File Name="source/lvgl/lv_hal/lv_hal_tick.c"/>
+        <File Name="source/lvgl/lv_hal/lv_hal_indev.h"/>
+        <File Name="source/lvgl/lv_hal/lv_hal_indev.c"/>
+        <File Name="source/lvgl/lv_hal/lv_hal_disp.h"/>
+        <File Name="source/lvgl/lv_hal/lv_hal_disp.c"/>
+        <File Name="source/lvgl/lv_hal/lv_hal.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="lv_draw">
+        <File Name="source/lvgl/lv_draw/lv_draw_vbasic.h"/>
+        <File Name="source/lvgl/lv_draw/lv_draw_vbasic.c"/>
+        <File Name="source/lvgl/lv_draw/lv_draw_rbasic.h"/>
+        <File Name="source/lvgl/lv_draw/lv_draw_rbasic.c"/>
+        <File Name="source/lvgl/lv_draw/lv_draw.h"/>
+        <File Name="source/lvgl/lv_draw/lv_draw.c"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="lv_core">
+        <File Name="source/lvgl/lv_core/lv_vdb.h"/>
+        <File Name="source/lvgl/lv_core/lv_vdb.c"/>
+        <File Name="source/lvgl/lv_core/lv_style.h"/>
+        <File Name="source/lvgl/lv_core/lv_style.c"/>
+        <File Name="source/lvgl/lv_core/lv_refr.h"/>
+        <File Name="source/lvgl/lv_core/lv_refr.c"/>
+        <File Name="source/lvgl/lv_core/lv_obj.h"/>
+        <File Name="source/lvgl/lv_core/lv_obj.c"/>
+        <File Name="source/lvgl/lv_core/lv_indev.h"/>
+        <File Name="source/lvgl/lv_core/lv_indev.c"/>
+        <File Name="source/lvgl/lv_core/lv_group.h"/>
+        <File Name="source/lvgl/lv_core/lv_group.c"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <Description/>
+  <Dependencies/>
+  <Settings Type="Dynamic Library">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="gnu gcc" DebuggerType="GNU gdb debugger" Type="Dynamic Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g" C_Options="-g" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="" IntermediateDirectory="./Debug" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <RebuildCommand/>
+        <CleanCommand>make clean</CleanCommand>
+        <BuildCommand>make</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(WorkspacePath)</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="gnu gcc" DebuggerType="GNU gdb debugger" Type="Dynamic Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O2" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="" IntermediateDirectory="./Release" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="yes">
+        <RebuildCommand/>
+        <CleanCommand>make clean</CleanCommand>
+        <BuildCommand>make</BuildCommand>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory>$(WorkspacePath)</WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>

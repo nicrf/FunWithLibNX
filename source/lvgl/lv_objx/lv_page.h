@@ -80,6 +80,12 @@ typedef enum {
 lv_obj_t * lv_page_create(lv_obj_t * par, lv_obj_t * copy);
 
 /**
+ * Delete all children of the scrl object, without deleting scrl child.
+ * @param obj pointer to an object
+ */
+void lv_page_clean(lv_obj_t *obj);
+
+/**
  * Get the scrollable object of a page
  * @param page pointer to a page object
  * @return pointer to a container which is the scrollable part of the page
@@ -160,7 +166,7 @@ static inline void lv_page_set_scrl_layout(lv_obj_t * page, lv_layout_t layout)
  * @param page pointer to a page object
  * @param type which style should be set
  * @param style pointer to a style
- *  */
+ */
 void lv_page_set_style(lv_obj_t *page, lv_page_style_t type, lv_style_t *style);
 
 /*=====================
@@ -229,7 +235,7 @@ static inline bool lv_page_get_scrl_fit_ver(lv_obj_t * page)
  * @param page pointer to page object
  * @param type which style should be get
  * @return style pointer to a style
- *  */
+ */
 lv_style_t * lv_page_get_style(lv_obj_t *page, lv_page_style_t type);
 
 /*=====================
