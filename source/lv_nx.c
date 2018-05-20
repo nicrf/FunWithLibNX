@@ -24,11 +24,18 @@ static void ex_mem_fill(lv_color_t * dest, uint32_t length, lv_color_t color);
 #endif
 static bool ex_tp_read(lv_indev_data_t *data);
 static bool gamepad_read(lv_indev_data_t *data);
+static bool nx_ctrl_handler();
+static uint32_t nx_to_lv(u32 key);
 static void  put_px(u32 x,u32 y, lv_color_t  color_p);
+static u64 get_last_key();
 /**********************
  *  STATIC VARIABLES
  **********************/
-
+static u64 kDownOld = 0;
+static u64 kHeldOld = 0;
+static u64 kUpOld = 0; //In these variables there will be information about keys detected in the previous frame
+static lv_indev_state_t state;
+static touchPosition touch;
 /**********************
  *      MACROS
  **********************/
@@ -62,10 +69,10 @@ static void ex_disp_flush(int32_t x1, int32_t y1, int32_t x2, int32_t y2, const 
 
     /* IMPORTANT!!!
      * Inform the graphics library that you are ready with the flushing*/
-    lv_flush_ready();
-	// gfxFlushBuffers();
-	// gfxSwapBuffers();
-	// gfxWaitForVsync();
+	/*gfxFlushBuffers();
+	gfxSwapBuffers();
+	gfxWaitForVsync();*/
+	lv_flush_ready();
 }
 
 
@@ -134,40 +141,122 @@ static void ex_mem_fill(lv_color_t * dest, uint32_t length, lv_color_t color)
  * REaturn false if no more data read; true for ready again */
 static bool ex_tp_read(lv_indev_data_t *data)
 {
+	/* Read your touchpad */
 	//hidKeysDown returns information about which buttons have been just pressed (and they weren't in the previous frame)
-	u64 kDown = hidKeysDown(CONTROLLER_P1_AUTO);
-	data->key = kDown;
-	if (kDown & KEY_TOUCH) 
-	{
-		 touchPosition touch;
-		 hidTouchRead(&touch, hidTouchCount()); //Get last touch
-		/* Read your touchpad */
-		 data->state = LV_INDEV_STATE_PR;// or LV_INDEV_STATE_PR  LV_INDEV_STATE_REL;
-		 data->point.x = touch.px;
-		 data->point.y = touch.py; 
-	}
-	else
-	{
-		data->state =LV_INDEV_STATE_REL;
-	}
 
+	data->state = (kDownOld & KEY_TOUCH)  ? LV_INDEV_STATE_PR : LV_INDEV_STATE_REL;;// or LV_INDEV_STATE_PR  LV_INDEV_STATE_REL;
+	data->point.x = touch.px;
+	data->point.y = touch.py; 
+	
     return false;   /*false: no more data to read because we are no buffering*/
 }
 
 static bool gamepad_read(lv_indev_data_t *data) 
 {
-    //data->key = last_key();
-        
-  /*  if(key_pressed()) {
-        data->state = LV_INDEV_EVENT_PR;
-    } else {
-        data->state = LV_INDEV_EVENT_REL;
-    }*/
-
+    data->state = state;
+    data->key = nx_to_lv(kDownOld);
     return false;   /*No buffering so no more data read*/
 } 
 
+static bool nx_ctrl_handler()
+{
+	
+	u64 kDown;
+	//Scan all the inputs. This should be done once for each frame
+	hidScanInput();	
+	
+	//hidKeysDown returns information about which buttons have been just pressed (and they weren't in the previous frame)
+	kDown = hidKeysDown(CONTROLLER_P1_AUTO);
+	
+		
+	hidTouchRead(&touch, hidTouchCount()); //Get last touch 
+	
+	if (kDown & KEY_PLUS)
+	{
+		return true;
+	}
+	//hidKeysHeld returns information about which buttons have are held down in this frame
+	//u64 kHeld = hidKeysHeld(CONTROLLER_P1_AUTO);
+	//hidKeysUp returns information about which buttons have been just released
+	//u64 kUp = hidKeysUp(CONTROLLER_P1_AUTO);
+	
+	if (kDown != kDownOld)// || kHeld != kHeldOld || kUp != kUpOld)
+	{
+		state = LV_INDEV_STATE_PR;
+	}
+	else
+	{
+		state = LV_INDEV_STATE_REL;
+	}
+	
 
+	//Set keys old values for the next frame
+	kDownOld = kDown;
+	//kHeldOld = kHeld;
+	//kUpOld = kUp;	
+	
+	return false;
+}
+
+static uint32_t nx_to_lv(u32 key)
+{
+	if (key & KEY_DRIGHT || key & KEY_LSTICK_RIGHT)
+	{
+		return LV_GROUP_KEY_RIGHT;
+	}
+	
+	if (key & KEY_DLEFT || key & KEY_LSTICK_LEFT)
+	{
+		return LV_GROUP_KEY_LEFT;
+	}
+	
+	if (key & KEY_DUP || key & KEY_LSTICK_UP)
+	{
+		return LV_GROUP_KEY_UP;
+	}
+	
+	if (key & KEY_DDOWN || key & KEY_LSTICK_DOWN)
+	{
+		return LV_GROUP_KEY_DOWN;
+	}
+	
+	return key;
+	/*Remap some key to LV_GROUP_KEY_... to manage groups*/
+    /*switch(key) {
+        case KEY_DRIGHT:
+        case KEY_LSTICK_RIGHT:
+            return LV_GROUP_KEY_RIGHT;
+
+        case KEY_DLEFT:
+        case KEY_LSTICK_LEFT:
+            return LV_GROUP_KEY_LEFT;
+
+        case KEY_DUP:
+        case KEY_LSTICK_UP:
+            return LV_GROUP_KEY_UP;
+
+        case KEY_DDOWN:
+        case KEY_LSTICK_DOWN:
+            return LV_GROUP_KEY_DOWN;
+
+        case KEY_Y:
+		case KEY_X:
+            return LV_GROUP_KEY_ESC;   
+
+        case KEY_B:
+        case KEY_A:
+            return LV_GROUP_KEY_ENTER;
+
+        default: return key;
+    }*/
+}
+
+
+static u64 get_last_key()
+{
+	return kDownOld;
+}
+	
 static void  put_px(u32 x,u32 y, lv_color_t  color_p)
 {
 	_put_px(x,y,RGBA8_MAXALPHA(color_p.red,color_p.green,color_p.blue));

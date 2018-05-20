@@ -1,4 +1,6 @@
-#pragma once
+//#pragma once
+#ifndef LV_NX
+#define LV_NX
 
 #ifdef __cplusplus
 extern "C" {
@@ -13,6 +15,7 @@ extern "C" {
 /*********************
  *      DEFINES
  *********************/
+
 
 /**********************
  *      TYPEDEFS
@@ -31,3 +34,5 @@ extern "C" {
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
+
+#endif /* LV_NZ */

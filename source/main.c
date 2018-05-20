@@ -1,8 +1,8 @@
 #include <string.h>
 #include <stdio.h>
-#include <string.h>
 #include <dirent.h>
 #include <switch.h>
+
 
 #include "lv_nx.c"
 
@@ -45,11 +45,16 @@ int main(int argc, char **argv)
 	/*Finally register the driver*/
     lv_disp_drv_register(&disp_drv);
 	
-	
+	/********************
+	* CREATE A GROUP
+	*******************/	 
+	 lv_group_t *g = lv_group_create();
+	// lv_group_t *groupButton = lv_group_create();
+	 
 	/*************************
 	* Input device interface
 	*************************/
-    /*Add a touchpad in the example*/
+    /*Add a touchpad interface*/
     /*touchpad_init();*/                            /*Initialize your touchpad*/
     lv_indev_drv_t indev_drv;                       /*Descriptor of an input device driver*/
     lv_indev_drv_init(&indev_drv);                  /*Basic initialization*/
@@ -57,7 +62,13 @@ int main(int argc, char **argv)
     indev_drv.read = ex_tp_read;                 	/*Library ready your touchpad via this function*/
     lv_indev_drv_register(&indev_drv);              /*Finally register the driver*/
 	
-	
+	/*Add a gamepad interface*/
+    lv_indev_drv_t indev_gamepad_drv;                       /*Descriptor of an input device driver*/
+    lv_indev_drv_init(&indev_gamepad_drv);                  /*Basic initialization*/
+    indev_gamepad_drv.type = LV_INDEV_TYPE_KEYPAD;         /*The touchpad is pointer type device*/
+    indev_gamepad_drv.read = gamepad_read;                 	/*Library ready your touchpad via this function*/
+    lv_indev_t * kp_indev = lv_indev_drv_register(&indev_gamepad_drv);              /*Finally register the driver*/
+	lv_indev_set_group(kp_indev, g);
 	/********************
 	*  THEME
 	*******************/
@@ -78,19 +89,15 @@ int main(int argc, char **argv)
      lv_scr_load(scr);
 	 
 	 
-	/********************
-	* CREATE A GROUP
-	*******************/	 
-	 lv_group_t *groupFileList = lv_group_create();
-	 lv_group_t *groupButton = lv_group_create();
+
 	 
     /****************
      * ADD A TITLE
      ****************/
     lv_obj_t *label = lv_label_create(lv_scr_act(), NULL);  /*First parameters (scr) is the parent*/
-    lv_label_set_text(label, "Simple File Explorer ");  /*Set the text*/
+    lv_label_set_text(label, "Simple File Explorer");  /*Set the text*/
     lv_obj_align(label, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 0);
-	
+	lv_obj_set_size(label,400,50);
 	/****************
      * ADD A FILE LIST
      ****************/
@@ -99,7 +106,7 @@ int main(int argc, char **argv)
 	lv_obj_set_size(listFile, 400, 600);
 	lv_obj_align(listFile, NULL, LV_ALIGN_IN_TOP_LEFT, 20, 100);
 	lv_list_set_sb_mode(listFile, LV_SB_MODE_AUTO);
-	lv_group_add_obj(groupFileList, listFile);
+	lv_group_add_obj(g, listFile);
 	
 	/*Add list elements*/
 	lv_list_add(listFile, SYMBOL_FILE, "New", NULL);
@@ -108,9 +115,9 @@ int main(int argc, char **argv)
 	/*Create a normal button*/
 	lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL);
 	lv_cont_set_fit(btn1, true, true); /*Enable resizing horizontally and vertically*/
-	lv_obj_align(btn1, label, LV_ALIGN_OUT_BOTTOM_MID, 900, 100);
+	lv_obj_align(btn1, NULL, LV_ALIGN_IN_TOP_LEFT, 900, 100);
 	lv_obj_set_free_num(btn1, 1);   /*Set a unique number for the button*/
-	lv_group_add_obj(groupFileList,btn1);
+	lv_group_add_obj(g,btn1);
 	
 	/****************
      * Directory 
@@ -147,8 +154,8 @@ int main(int argc, char **argv)
 	/*Create the third line meter and label*/
 	lv_obj_t * lmeter;
 	lmeter = lv_lmeter_create(lv_scr_act(), NULL);
-	lv_lmeter_set_range(lmeter, 0, 100);   
-	lv_lmeter_set_value(lmeter, 90);
+	lv_lmeter_set_range(lmeter, 0, 60);   
+	lv_lmeter_set_value(lmeter, 0);
 	lv_obj_align(lmeter, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, -20, -20);
 	u32  cnt=0;
 	
@@ -166,36 +173,38 @@ int main(int argc, char **argv)
 		if(cnt==60)
 		{
 			cnt=0;
+			//lv_page_clean(listFile);
 		}
 		else
 		{
 			cnt++;
 		}
 		lv_lmeter_set_value(lmeter, cnt);
-
+		
+		if (nx_ctrl_handler()) break; // break in order to return to hbmenu
+		
 		/* Periodically call this function.
          * The timing is not critical but should be between 1..10 ms */
 		lv_tick_inc(5);
         lv_task_handler();
-
-	
-		//hidKeysDown returns information about which buttons have been just pressed (and they weren't in the previous frame)
-		u32 kDown = hidKeysDown(CONTROLLER_P1_AUTO);
 		
+		//lv_label_set_text(label, get_last_key());
+		/*
 		if (kDown & KEY_A)
 		{
 			//lv_page_clean(listFile);
-			//lv_label_set_text(label, "asddasadsads ");  /*Set the text*/
+			//lv_label_set_text(label, "asddasadsads ");  //Set the text//
 			
 			for (int x = 0; x < 750; x++) {
 				_put_px(x,50,RGBA8_MAXALPHA(255,128,250));
 			}        
-		}
+		}*/
 		
-		if (kDown & KEY_PLUS) break; // break in order to return to hbmenu
-		 gfxFlushBuffers();
-		 gfxSwapBuffers();
-		 gfxWaitForVsync();
+		
+		
+		gfxFlushBuffers();
+		gfxSwapBuffers();
+		gfxWaitForVsync();
 	}
 
 	gfxExit();
